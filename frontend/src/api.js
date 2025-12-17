@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '';
+const API_URL = '/api';
 
 export const simulateRoundRobin = async (processes, quantum) => {
   try {
