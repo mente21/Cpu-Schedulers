@@ -17,7 +17,10 @@ function App() {
       const result = await simulateRoundRobin(processes, quantum);
       setData(result);
     } catch (err) {
-      setError(err.message || 'Failed to fetch results. Ensure backend is running.');
+      const errorMessage = err.response 
+        ? `Backend Error (${err.response.status}): ${err.response.data?.error || err.message}`
+        : `Network Error: ${err.message}. Check if your Vercel logs show any build errors for the backend.`;
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

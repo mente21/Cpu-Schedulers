@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import collections
+import traceback
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
 class Process:
     def __init__(self, pid, arrival_time, burst_time):
@@ -26,13 +27,10 @@ def round_robin_scheduler(processes, time_quantum):
     added_to_queue = {p.pid: False for p in processes}
     
     def add_arrived_processes(current_time):
-        added_count = 0
         for p in processes:
             if p.arrival_time <= current_time and not added_to_queue[p.pid]:
                 ready_queue.append(p)
                 added_to_queue[p.pid] = True
-                added_count += 1
-        return added_count
 
     add_arrived_processes(0)
     
@@ -72,13 +70,11 @@ def round_robin_scheduler(processes, time_quantum):
 
     return completed_processes, execution_log, timeline_data
 
-@app.route('/api/health')
-@app.route('/health')
+@app.route('/api/health', methods=['GET'])
 def health():
     return jsonify({"status": "ok", "message": "Backend is running"}), 200
 
 @app.route('/api/simulate', methods=['POST'])
-@app.route('/simulate', methods=['POST'])
 def simulate():
     try:
         data = request.get_json()
@@ -118,7 +114,6 @@ def simulate():
         })
 
     except Exception as e:
-        import traceback
         return jsonify({"error": str(e), "trace": traceback.format_exc()}), 500
 
 if __name__ == '__main__':
