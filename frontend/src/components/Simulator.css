@@ -1,0 +1,358 @@
+/* Simulator.css */
+
+/* --- Variables & Core Setup --- */
+:root {
+    --sim-primary: #00f2ff;
+    --sim-secondary: #7000ff;
+    --sim-accent: #ff007a;
+    --sim-dark-bg: #05070a;
+    --sim-card-bg: rgba(13, 16, 20, 0.6);
+    --sim-border: rgba(255, 255, 255, 0.08);
+    --sim-glass: blur(12px);
+}
+
+.simulator-container {
+    min-height: 100vh;
+    background-color: var(--sim-dark-bg);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    padding-bottom: 5rem;
+    position: relative;
+    padding-top: 100px;
+    /* Added top padding to prevent Navbar overlapping/crop */
+}
+
+/* --- Animated Background --- */
+.sim-bg-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(112, 0, 255, 0.08), transparent 25%),
+        radial-gradient(circle at 15% 80%, rgba(0, 242, 255, 0.05), transparent 25%);
+    pointer-events: none;
+}
+
+/* --- Headers --- */
+.sim-header-section {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem 0 3rem;
+    /* Reduced top padding since container has padding-top */
+}
+
+.sim-page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+    .sim-page-title {
+        font-size: 2.5rem;
+    }
+}
+
+.sim-page-desc {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Badge --- */
+.sim-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sim-primary);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+}
+
+/* --- Info Grid --- */
+.sim-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.sim-info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--sim-border);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.sim-info-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* --- Main Layout --- */
+.sim-main-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 1024px) {
+    .sim-main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Glass Cards --- */
+.sim-card {
+    background: var(--sim-card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--sim-border);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.sim-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sim-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* --- Inputs --- */
+.sim-input-group {
+    margin-bottom: 1.25rem;
+}
+
+.sim-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+}
+
+.sim-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--sim-border);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.sim-input:focus {
+    outline: none;
+    border-color: var(--sim-primary);
+    box-shadow: 0 0 0 2px rgba(0, 242, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* --- Buttons --- */
+.sim-btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--sim-primary), var(--sim-secondary));
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px -5px rgba(112, 0, 255, 0.3);
+}
+
+.sim-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgba(112, 0, 255, 0.5);
+}
+
+.sim-btn-icon {
+    padding: 0.75rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid var(--sim-border);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sim-btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* --- Table --- */
+.sim-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 1.5rem;
+    border: 1px solid var(--sim-border);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sim-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.sim-table th {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+.sim-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+.sim-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Process Indicators --- */
+.sim-process-badge {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Viz Panel --- */
+.sim-viz-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 1.5rem;
+    border: 1px solid var(--sim-border);
+}
+
+.sim-viz-btn-play {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 2rem;
+    background: var(--sim-primary);
+    color: #000;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sim-viz-btn-play:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+/* --- Custom Scrollbar --- */
+.custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Delete Button PRO Styling --- */
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete:hover {
+    color: #ef4444;
+    /* Red color on hover */
+    background: rgba(239, 68, 68, 0.1);
+    transform: scale(1.1);
+}
