@@ -14,34 +14,26 @@ const Footer = () => {
           
           <div className="h-px w-24 bg-white/10"></div>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', alignItems: 'center', marginBottom: '10px' }}>
-              <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: '800' }}>Supervised by</span>
-              <span style={{ fontSize: '1.1rem', color: '#fff', fontWeight: 'bold' }}>Gashaw A(Msc.)</span>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', maxWidth: 720 }}>
+            <p style={{ color: '#94a3b8', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: '700' }}>About</p>
+            <p style={{ color: '#cbd5e1', textAlign: 'center', margin: 0 }}>
+              Schedulix — an interactive CPU scheduling simulator for visualizing and comparing scheduling
+              algorithms such as Round Robin, FCFS, and SJF. Use the simulator to experiment with time
+              quantum, arrival times, and priorities to understand scheduler behaviour and performance.
+            </p>
 
-            <div className="h-px w-12 bg-white/5 mb-2"></div>
+            <div className="h-px w-24 bg-white/10 my-4"></div>
 
-            <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: '800' }}>Developed by</span>
-            <span style={{ 
-              fontWeight: '900', 
-              color: '#00f2ff', 
-              fontFamily: "'JetBrains Mono', monospace", 
-              fontSize: '1.2rem', 
-              textShadow: '0 0 15px rgba(0, 242, 255, 0.8), 0 0 30px rgba(0, 242, 255, 0.4)',
-              letterSpacing: '-0.02em'
-            }}>Mentesnot Debele (NSR/659/16)</span>
-            <span style={{ 
-              fontWeight: '900', 
-              color: '#00f2ff', 
-              fontFamily: "'JetBrains Mono', monospace", 
-              fontSize: '1.2rem', 
-              textShadow: '0 0 15px rgba(0, 242, 255, 0.8), 0 0 30px rgba(0, 242, 255, 0.4)',
-              letterSpacing: '-0.02em'
-            }}>Biniyam Taye (NSR/190/16)</span>
-            
-            <p className="text-[0.65rem] text-white/30 uppercase font-black tracking-[0.3em]" style={{ marginTop: '15px' }}>
-              AMU 16 Batch 2018 E.C.
+            <p style={{ color: '#94a3b8', fontSize: '0.75rem', margin: 0 }}>
+              <strong style={{ color: '#ffffff' }}>Source:</strong>{' '}
+              <a href="https://github.com/mente21/Cpu-Schedulers" target="_blank" rel="noopener noreferrer" style={{ color: '#7dd3fc', textDecoration: 'underline' }}>
+                github.com/mente21/Cpu-Schedulers
+              </a>
+            </p>
+
+            <p style={{ color: '#94a3b8', fontSize: '0.75rem', marginTop: '6px' }}>
+              <span style={{ color: '#ffffff' }}>&copy; {new Date().getFullYear()} Schedulix</span>
+              {' '}• Licensed under MIT
             </p>
           </div>
         </div>
